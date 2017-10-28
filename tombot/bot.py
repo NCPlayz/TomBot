@@ -59,20 +59,20 @@ class TomBotBase(commands.Bot):
 
         super().__init__(command_prefix=get_prefix(), game=get_game(), description=get_description(), pm_help=None,
                          help_attrs=dict(hidden=True))
-        async def _on_ready(self):
-            startup_extensions = []
-            for file in os.listdir("./cogs"):
-                if file.endswith(".py"):
-                    startup_extensions.append(file.replace('.py', ''))
-            for extension in startup_extensions:
-                if extension == "__init__":
-                   return
-               else:
-                    try:
-                        self.load_extension(f'cogs.{extension}')
-                    except Exception as e:
-                        error = f'{extension}\n {type(e).__name__}: {e}'
-                        print(f'Failed to load extension {error}')
+    async def _on_ready(self):
+        startup_extensions = []
+        for file in os.listdir("./cogs"):
+            if file.endswith(".py"):
+                startup_extensions.append(file.replace('.py', ''))
+        for extension in startup_extensions:
+            if extension == "__init__":
+                return
+            else:
+                try:
+                    self.load_extension(f'cogs.{extension}')
+                except Exception as e:
+                    error = f'{extension}\n {type(e).__name__}: {e}'
+                    print(f'Failed to load extension {error}')
 
     def run(self):
         super().run(self.token)
