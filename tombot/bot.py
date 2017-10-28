@@ -59,7 +59,7 @@ class TomBotBase(commands.Bot):
 
         super().__init__(command_prefix=get_prefix(), game=get_game(), description=get_description(), pm_help=None,
                          help_attrs=dict(hidden=True))
-    async def _on_ready(self):
+    async def on_ready(self):
         startup_extensions = []
         for file in os.listdir("./cogs"):
             if file.endswith(".py"):
