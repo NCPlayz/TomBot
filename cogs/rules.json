@@ -1,0 +1,21 @@
+{
+    "1": ["__**RULE #1 - NO NSFW CONTENT**__",
+        "Any NSFW content is strictly prohibited. If a user posts NSFW content and has not been active beforehand, they can be banned instantly.",
+        "If you are unsure if the content you want to share is NSFW, please PM a member of staff before posting."],
+    "2": ["__**RULE #2 - NO ABUSE**__",
+        "No racism, homophobia, transphobia, hate speech or any similar disrespectful action or personal attacks of any sort are tolerated to any member.",
+        "Please report this to a member of staff if you see it."],
+    "3": ["__**RULE #3 - AVOID VOLATILE TOPICS**__",
+        "Avoid discussion of potentially controversial topics, e.g. politics, ideologies, religion.",
+        "This discussions will only be permitted whilst all members taking part are respectful and calm."],
+    "4": ["__**RULE #4 - NO SPAM/TAGGING**__",
+        "Do not spam any members of the server, via text or excessive pinging. Do not use `@here` or `@everyone` tags ever.",
+        "Although it is exciting that they are here, do not tag Yogscast members unless they are currently active in text chat."],
+    "5": ["__**RULE #5 - NO ALT ACCOUNTS**__",
+        "Do not use alternate accounts on this discord server, even for comedic reasons as they are a breach of the strike system.",
+        "Any users found to be using alt accounts risk one of them being permanently banned."],
+    "6": ["__**RULE #6 - NO ADVERTISING**__",
+        "Please seek permission of the staff before sharing the link to another discord server (aside from official Yogscast ones), or links to personal self promotion sites such as gofundme, patreon or kickstarter."],
+    "7": ["__**RULE #7 - KEEP TO THE RIGHT CHANNEL**__",
+        "Keep all content in the specified channels."]
+}
