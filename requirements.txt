@@ -5,7 +5,7 @@ bs4==0.0.1
 certifi==2017.4.17
 cffi==1.11.2
 chardet==3.0.4
-discord.py==1.0.0a1388
+discord.py==https://github.com/Rapptz/discord.py@rewrite#egg=discord.py[voice]
 gitdb2==2.0.2
 GitPython==2.1.5
 idna==2.5
