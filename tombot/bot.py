@@ -43,7 +43,7 @@ class TomBotBase(commands.Bot):
         self.presence = discord.Game(name=f'TomBot v{Utils.get_package_info("version")} | &help'
                                      , url="https://www.twitch.tv/yogscast", type=1)
         self.token = os.environ['TOKEN']
-        self.session = aiohttp.ClientSession()
+        self.session = aiohttp.ClientSession(loop=self.loop)
         self.loop.create_task(self.load_all_cogs())
 
         def get_prefix():
