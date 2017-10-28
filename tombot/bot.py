@@ -75,7 +75,7 @@ class TomBotBase(commands.Bot):
                     print(f'Failed to load extension {error}')
 
     def run(self):
-        super().run(self.token.value)
+        super().run(self.token)
 
     async def on_message(self, message):
         ctx = await self.get_context(message, cls=TomBotContext)
