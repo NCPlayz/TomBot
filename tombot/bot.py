@@ -1,12 +1,13 @@
+import asyncio
 import json
-import discord
 import os
-from discord.ext import commands
+
 import aiohttp
+import discord
+from discord.ext import commands
 
 
 class TomBotContext(commands.Context):
-
     def is_float(self, string):
         try:
             return float(string)  # True if string is a number contains a dot
@@ -37,11 +38,13 @@ class Utils:
 
 class TomBotBase(commands.Bot):
     """This is the class that initializes the bot."""
+
     def __init__(self):
         self.presence = discord.Game(name=f'TomBot v{Utils.get_package_info("version")} | &help'
                                      , url="https://www.twitch.tv/yogscast", type=1)
         self.token = os.environ['TOKEN']
         self.session = aiohttp.ClientSession()
+        self.loop.create_task(self.load_all_cogs())
 
         def get_prefix():
             """Fetches all known prefixes."""
@@ -59,23 +62,19 @@ class TomBotBase(commands.Bot):
 
         super().__init__(command_prefix=get_prefix(), game=get_game(), description=get_description(), pm_help=None,
                          help_attrs=dict(hidden=True))
-    async def on_ready(self):
-        startup_extensions = []
-        for file in os.listdir("./cogs"):
-            if file.endswith(".py"):
-                startup_extensions.append(file.replace('.py', ''))
-        for extension in startup_extensions:
-            if extension == "__init__":
-                return
-            else:
-                try:
-                    self.load_extension(f'cogs.{extension}')
-                except Exception as e:
-                    error = f'{extension}\n {type(e).__name__}: {e}'
-                    print(f'Failed to load extension {error}')
 
     def run(self):
         super().run(self.token)
+
+    async def on_ready(self):
+        """
+        Occurs when ever the bot connects or resumes.
+        """
+        print('-' * 10)
+        self.appinfo = await self.application_info()
+        print(f"Logged in as: {self.user.name}\nwith discord version: {discord.__version__}\n"
+              f"Owner: {self.appinfo.owner}")
+        print("-" * 10)
 
     async def on_message(self, message):
         ctx = await self.get_context(message, cls=TomBotContext)
@@ -90,6 +89,27 @@ class TomBotBase(commands.Bot):
                 return resp, await cont()
             else:
                 return resp, None
+
+    async def load_all_cogs(self):
+        """
+        Waits until ready, and for the on_ready event to trigger then loads all cogs.
+        """
+        await self.wait_until_ready()
+        await asyncio.sleep(1)
+        startup_extensions = []
+        for file in os.listdir("./cogs"):
+            if file.endswith(".py"):
+                startup_extensions.append(file.replace('.py', ''))
+        for extension in startup_extensions:
+            if extension == "__init__":
+                return
+            else:
+                try:
+                    self.load_extension(f'cogs.{extension}')
+                    print(f'Loaded {extension}')
+                except Exception as e:
+                    error = f'{extension}\n {type(e).__name__}: {e}'
+                    print(f'Failed to load extension {error}')
 
 
 class TomBot(TomBotBase):
