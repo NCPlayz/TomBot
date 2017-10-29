@@ -13,4 +13,4 @@ def log():
 
 if __name__ == '__main__':
     log()
-    TomBot().run(os.environ['TOKEN']
+    TomBot().run(os.environ['TOKEN'])
