@@ -50,7 +50,7 @@ class ModChat:
     @is_private()
     async def complain(self, ctx, *, query: str=None):
         if query:
-            mod_log = self.bot.get_channel(371043499497357312)
+            mod_log = self.bot.get_channel(373156271056224256)
             await self.send(
                 ctx, mod_log, False, query,
                 f'Type {ctx.prefix}chat reply {ctx.author.name} to continue this conversation.'
