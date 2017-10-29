@@ -63,9 +63,6 @@ class TomBotBase(commands.Bot):
         super().__init__(command_prefix=get_prefix(), game=get_game(), description=get_description(), pm_help=None,
                          help_attrs=dict(hidden=True))
 
-    def run(self):
-        super().run(self.token)
-
     async def on_ready(self):
         """
         Occurs when ever the bot connects or resumes.
