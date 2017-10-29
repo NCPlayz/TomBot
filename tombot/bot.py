@@ -60,8 +60,20 @@ class TomBotBase(commands.Bot):
 
         super().__init__(command_prefix=get_prefix(), game=get_game(), description=get_description(), pm_help=None,
                          help_attrs=dict(hidden=True))
-        self.session = aiohttp.ClientSession()
-        self.loop.create_task(self.load_all_cogs())
+        
+        startup_extensions = []
+        for file in os.listdir("./cogs"):
+            if file.endswith(".py"):
+                startup_extensions.append(file.replace('.py', ''))
+        for extension in startup_extensions:
+            try:
+                self.load_extension(f'cogs.{extension}')
+                print(f'Loaded {extension}')
+            except Exception as e:
+                error = f'{extension}\n {type(e).__name__}: {e}'
+                print(f'Failed to load extension {error}')
+                
+        self.session = None
 
     async def on_ready(self):
         """
@@ -72,6 +84,7 @@ class TomBotBase(commands.Bot):
         print(f"Logged in as: {self.user.name}\nwith discord version: {discord.__version__}\n"
               f"Owner: {self.appinfo.owner}")
         print("-" * 10)
+        self.session = aiohttp.ClientSession()
 
     async def on_message(self, message):
         ctx = await self.get_context(message, cls=TomBotContext)
@@ -86,24 +99,6 @@ class TomBotBase(commands.Bot):
                 return resp, await cont()
             else:
                 return resp, None
-
-    async def load_all_cogs(self):
-        """
-        Waits until ready, and for the on_ready event to trigger then loads all cogs.
-        """
-        await self.wait_until_ready()
-        await asyncio.sleep(1)
-        startup_extensions = []
-        for file in os.listdir("./cogs"):
-            if file.endswith(".py"):
-                startup_extensions.append(file.replace('.py', ''))
-        for extension in startup_extensions:
-            try:
-                self.load_extension(f'cogs.{extension}')
-                print(f'Loaded {extension}')
-            except Exception as e:
-                error = f'{extension}\n {type(e).__name__}: {e}'
-                print(f'Failed to load extension {error}')
 
 
 class TomBot(TomBotBase):
