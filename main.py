@@ -1,5 +1,6 @@
 from tombot.bot import TomBot
 import logging
+import os
 
 
 def log():
@@ -12,4 +13,4 @@ def log():
 
 if __name__ == '__main__':
     log()
-    TomBot().run()
+    TomBot().run(os.environ['TOKEN']
