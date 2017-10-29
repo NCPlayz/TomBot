@@ -44,7 +44,6 @@ class TomBotBase(commands.Bot):
                                      , url="https://www.twitch.tv/yogscast", type=1)
         self.token = os.environ['TOKEN']
         self.session = aiohttp.ClientSession(loop=self.loop)
-        self.loop.create_task(self.load_all_cogs())
 
         def get_prefix():
             """Fetches all known prefixes."""
@@ -62,6 +61,7 @@ class TomBotBase(commands.Bot):
 
         super().__init__(command_prefix=get_prefix(), game=get_game(), description=get_description(), pm_help=None,
                          help_attrs=dict(hidden=True))
+        self.loop.create_task(self.load_all_cogs())
 
     async def on_ready(self):
         """
