@@ -6,7 +6,7 @@ import os
 class Random:
     def __init__(self, bot):
         self.bot = bot
-        self.unsplash_client_id = os.environ['UNSPlASH_ID']
+        self.unsplash_client_id = os.environ['UNSPLASH_ID']
 
     async def get_image(self, ctx, link: str, name: str):
         image_embed = discord.Embed(
