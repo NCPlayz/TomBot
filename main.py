@@ -1,5 +1,11 @@
-from tombot.bot import TomBot
+import asyncio
 import logging
+
+from tombot.bot import TomBot
+
+
+async def start_bot():
+    TomBot.start()
 
 
 def log():
@@ -12,4 +18,5 @@ def log():
 
 if __name__ == '__main__':
     log()
-    TomBot().run()
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(start_bot())
