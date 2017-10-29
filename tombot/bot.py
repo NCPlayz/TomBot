@@ -98,15 +98,12 @@ class TomBotBase(commands.Bot):
             if file.endswith(".py"):
                 startup_extensions.append(file.replace('.py', ''))
         for extension in startup_extensions:
-            if extension == "__init__":
-                return
-            else:
-                try:
-                    self.load_extension(f'cogs.{extension}')
-                    print(f'Loaded {extension}')
-                except Exception as e:
-                    error = f'{extension}\n {type(e).__name__}: {e}'
-                    print(f'Failed to load extension {error}')
+            try:
+                self.load_extension(f'cogs.{extension}')
+                print(f'Loaded {extension}')
+            except Exception as e:
+                error = f'{extension}\n {type(e).__name__}: {e}'
+                print(f'Failed to load extension {error}')
 
 
 class TomBot(TomBotBase):
