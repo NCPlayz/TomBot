@@ -55,6 +55,7 @@ class Core:
         Username: {self.bot.user.name}
         User ID: {self.bot.user.id}
         Started: {self.bot.up_time}
+        Opus Loaded: {'True' if self.load_opus_lib else 'False'}
         -------------------------------------"""))
 
     async def on_message(self, message):
