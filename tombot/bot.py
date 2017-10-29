@@ -60,7 +60,7 @@ class TomBotBase(commands.Bot):
 
         super().__init__(command_prefix=get_prefix(), game=get_game(), description=get_description(), pm_help=None,
                          help_attrs=dict(hidden=True))
-        self.session = aiohttp.ClientSession(loop=self.loop)
+        self.session = aiohttp.ClientSession()
         self.loop.create_task(self.load_all_cogs())
 
     async def on_ready(self):
