@@ -1,4 +1,4 @@
-from os import listdir
+from os import listdir, environ
 import discord
 from bs4 import BeautifulSoup
 from discord.ext.commands import command, group
@@ -37,8 +37,8 @@ class Misc:
     """Quote commands."""
     def __init__(self, bot):
         self.bot = bot
-        self._weather_key = os.environ['WEATHER']
-        self._nasa_key = os.environ['NASA']
+        self._weather_key = environ['WEATHER']
+        self._nasa_key = environ['NASA']
 
     @command(aliases=['fw', 'fullwidth', 'ａｅｓｔｈｅｔｉｃ'], usage='<msg>')
     async def aesthetic(self, ctx, *, msg="aesthetic"):
