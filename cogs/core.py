@@ -93,7 +93,7 @@ class Core:
             await message.add_reaction(get.get_emote('YES'))
             await message.add_reaction(get.get_emote('NO'))
         if message.content == 'ayy':
-          await message.channel.send('lmao')
+           await message.channel.send('lmao')
 
 
 def setup(bot):
