@@ -6,7 +6,8 @@ from discord.ext import commands
 class Strike:
     async def send_log(self, ctx: commands.Context, member: discord.Member, reason: str):
         strike_embed = discord.Embed(
-            title="Strike"
+            title="Strike",
+            color=discord.Color.red()
         )
         strike_embed.add_field(
             name="User:",
@@ -30,7 +31,8 @@ class Strike:
     async def send_user(self, ctx: commands.Context, member: discord.Member, reason: str):
         strike_embed = discord.Embed(
             title=f"Strike",
-            description=f"You, {member.mention}, have been given a strike by {ctx.message.author}."
+            description=f"You, {member.mention}, have been given a strike by {ctx.message.author}.",
+            color=discord.Color.red()
         )
         strike_embed.add_field(
             name="Reason:",
