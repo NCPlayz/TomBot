@@ -15,10 +15,7 @@ class Mod:
         self.strike = Strike()
 
     def __local_check(self, ctx):
-        if discord.utils.get(ctx.guild.roles, name="Moderators™") in ctx.message.author.roles:
-            return True
-        else:
-            return False
+        return discord.utils.get(ctx.guild.roles, name="Moderators™") in ctx.message.author.roles
 
     @command(aliases=["onlyfro"])
     async def noreact(self, ctx, member: discord.Member):
