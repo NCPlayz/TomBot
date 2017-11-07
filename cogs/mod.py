@@ -12,7 +12,7 @@ class Mod:
     """Moderation Commands."""
     def __init__(self, bot):
         self.bot = bot
-        self.strike = Strike()
+        self.strike_ = Strike()
 
     def __local_check(self, ctx):
         return discord.utils.get(ctx.guild.roles, name="Moderators™") in ctx.message.author.roles
@@ -35,8 +35,8 @@ class Mod:
     async def strike(self, ctx, member: discord.Member, *, reason: str = None):
         """Strike a user."""
         if reason:
-            await self.strike.send_log(ctx, member, reason)
-            await self.strike.send_user(ctx, member, reason)
+            await self.strike_.send_log(ctx, member, reason)
+            await self.strike_.send_user(ctx, member, reason)
         else:
             await ctx.send('Please input reason.')
 
