@@ -26,7 +26,7 @@ class Strike:
             icon_url=ctx.message.author.avatar_url
         )
 
-        await discord.utils.get(ctx.guild.channels, name='bot-log').send(embed=strike_embed)
+        await discord.utils.get(ctx.guild.channels, name='feedback').send(embed=strike_embed)
 
     async def send_user(self, ctx: commands.Context, member: discord.Member, reason: str):
         strike_embed = discord.Embed(
