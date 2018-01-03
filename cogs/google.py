@@ -9,13 +9,6 @@ from urllib.parse import quote as uriquote
 log = logging.getLogger(__name__)
 
 
-def is_mod():
-    def predicate(ctx):
-        return discord.utils.get(ctx.guild.roles, name="Moderators™") in ctx.author.roles
-
-    return commands.check(predicate)
-
-
 def date(argument):
     formats = (
         '%Y/%m/%d',
@@ -36,43 +29,6 @@ class Buttons:
 
     def __init__(self, bot):
         self.bot = bot
-
-    @commands.command()
-    async def love(self, ctx):
-        """What is love?"""
-        action = random.choice([ctx.send('https://www.youtube.com/watch?v=HEXWRTEbj1I'),
-                                ctx.invoke(self.g, query='define: love')])
-
-        await action
-
-    @commands.command()
-    @is_mod()
-    async def nostalgia(self, ctx, date_: date, *, channel: discord.TextChannel = None):
-        """Pins an old message from a specific date.
-        If a channel is not given, then pins from the channel the
-        command was ran on.
-        The format of the date must be either YYYY-MM-DD or YYYY/MM/DD.
-        """
-        channel = channel or ctx.channel
-
-        message = await channel.history(after=date_, limit=1).flatten()
-
-        if len(message) == 0:
-            return await ctx.send('Could not find message.')
-
-        message = message[0]
-
-        try:
-            await message.pin()
-        except discord.HTTPException:
-            await ctx.send('Could not pin message.')
-        else:
-            await ctx.send('Pinned message.')
-
-    @nostalgia.error
-    async def nostalgia_error(self, ctx, error):
-        if isinstance(error, commands.BadArgument):
-            await ctx.send(error)
 
     def parse_google_card(self, node):
         e = discord.Embed(colour=discord.Colour.blurple())
