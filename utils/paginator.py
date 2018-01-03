@@ -30,6 +30,7 @@ class Pages:
         footer fields, and colour are internally modified.
     permissions: discord.Permissions
         Our permissions for the channel.
+    Taken from R. Danny by Danny#0007
     """
     def __init__(self, ctx, *, entries, per_page=12, show_entry_count=True):
         self.bot = ctx.bot
