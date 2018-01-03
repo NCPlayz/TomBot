@@ -32,7 +32,7 @@ def date(argument):
 
 
 class Buttons:
-    """Buttons that make you feel."""
+    """Buttons that make you feel. Taken from R. Danny by Danny#0007"""
 
     def __init__(self, bot):
         self.bot = bot
