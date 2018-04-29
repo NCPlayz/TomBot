@@ -92,8 +92,12 @@ class Core:
         if "y/n" in message.content:
             await message.add_reaction(get.get_emote('YES'))
             await message.add_reaction(get.get_emote('NO'))
-        if message.content == 'ayy':
+            
+        if message.content.lower() == 'ayy':
             await message.channel.send('lmao')
+            
+        if message.content.lower() in ["2 plus 2 is 4 minus 1 that's 3", "2+2=4-1=3"]:
+            await message.channels.send('quick maffs')
 
 
 def setup(bot):
