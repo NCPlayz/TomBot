@@ -97,7 +97,7 @@ class Core:
             await message.channel.send('lmao')
             
         if message.content.lower() in ["2 plus 2 is 4 minus 1 that's 3", "2+2=4-1=3"]:
-            await message.channels.send('quick maffs')
+            await message.channel.send('quick maffs')
 
 
 def setup(bot):
