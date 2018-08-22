@@ -38,13 +38,13 @@ class Math:
         await ctx.send(answer)
 
     @math.command(name="root")
-    async def _root(self, ctx, number: int, base: int=2):
-        """Calculate the root of a number.
-        If no base is given, calculates the square root."""
-        if base == 2:
+    async def _root(self, ctx, number: int, degree: int=2):
+        """Calculate the positive root of a number.
+        If no degree is given, calculates the square root."""
+        if degree == 2:
             answer = math.sqrt(number)
         else:
-            answer = math.pow(number, 1.0/base)
+            answer = math.pow(number, 1.0/degree)
         await ctx.send(answer)
 
     @group()
