@@ -7,33 +7,49 @@ class Math:
     def __init__(self, bot):
         self.bot = bot
 
-    @group(invoke_without_command=True)
+    @group(invoke_without_command=True, aliases=["maths"])
     async def math(self, ctx):
+        """Various mathematical functions, collected for your enjoyment."""
         if ctx.invoked_subcommand is None:
             pass
 
-    @math.group(name="circumference")
+    @math.group(name="circumference", aliases=["circ"])
     async def _circumference(self, ctx):
+        """Calculate the circumference of a circle given its radius or diameter."""
         if ctx.invoked_subcommand is None:
             pass
 
     @_circumference.command(name="radius")
     async def _radius(self, ctx, number: int):
+        """Calculate the circumference of a circle given its radius."""
         answer = (math.pi * 2) * number
         await ctx.send(answer)
 
     @_circumference.command(name="diameter")
     async def _diameter(self, ctx, number: int):
+        """Calculate the circumference of a circle given its diameter."""
         answer = math.pi * number
         await ctx.send(answer)
 
     @math.command(name="power")
     async def _power(self, ctx, number: int, power: int):
+        """Calculate x raised to the power y."""
         answer = math.pow(number, power)
+        await ctx.send(answer)
+
+    @math.command(name="root")
+    async def _root(self, ctx, number: int, base: int=2):
+        """Calculate the root of a number.
+        If no base is given, calculates the square root."""
+        if base == 2:
+            answer = math.sqrt(number)
+        else:
+            answer = math.pow(number, 1.0/power)
         await ctx.send(answer)
 
     @group()
     async def temp(self, ctx):
+        """Commands to convert between different units of temperature."""
         pass
 
     @temp.command()
