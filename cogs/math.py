@@ -44,7 +44,7 @@ class Math:
         if base == 2:
             answer = math.sqrt(number)
         else:
-            answer = math.pow(number, 1.0/power)
+            answer = math.pow(number, 1.0/base)
         await ctx.send(answer)
 
     @group()
