@@ -39,7 +39,7 @@ class Math:
 
     @math.command(name="root")
     async def _root(self, ctx, number: int, degree: int=2):
-        """Calculate the positive root of a number.
+        """Calculate the principal root of a number.
         If no degree is given, calculates the square root."""
         if degree == 2:
             answer = math.sqrt(number)
