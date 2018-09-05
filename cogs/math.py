@@ -42,17 +42,17 @@ class Math:
         ans = (temperature-32) * 5/9
         await ctx.send(embed=discord.Embed(
             title="Conversion",
-            description=f"{ans}°C",
+            description=f"{ans} °C",
             color=discord.Color.dark_orange()
         ))
 
     @temp.command()
     async def c(self, ctx, temperature: int):
         """Converts Celsius Temperatures to Fahrenheit Temperatures."""
-        ans = (temperature*1.9)+32
+        ans = (temperature*1.8)+32
         await ctx.send(embed=discord.Embed(
             title="Conversion",
-            description=f"{ans}°F",
+            description=f"{ans} °F",
             color=discord.Color.dark_orange()
         ))
 
