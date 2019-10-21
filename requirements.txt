@@ -19,7 +19,7 @@ redis==2.10.6
 requests==2.18.1
 six==1.11.0
 smmap2==2.0.3
-urllib3==1.21.1
+urllib3==1.24.2
 virtualenv==15.1.0
 websocket-client==0.44.0
 websockets==6.0
